@@ -4,110 +4,27 @@
   Shop
 @stop
 @section('content')
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="http://prodimage.images-bn.com/pimages/9780545139700_p0_v4_s1200x630.jpg"
-       alt="harry potter" class="img-responsive">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p class="descrioption">Lorem ipsum dolor sit amet, consectetur adipisicing </p>
-        <p>
-        <div class="clearfix">
-          <div class="pull-left price">
-            25$
-          </div>
-          <a href="#" class="btn btn-success pull-right" role="button">Add To Cart</a></p>
-        </div>
-      </div>
+    @foreach($products->chunk(3) as $productChunk)
+    <div class="row">
+       @foreach($productChunk as $product )
+       <div class="col-sm-6 col-md-4">
+         <div class="thumbnail">
+           <img src="{{ $product->imagePath }}"
+            alt="harry potter" class="img-responsive">
+           <div class="caption">
+             <h3>{{ $product->title }}</h3>
+             <p class="descrioption">{{ $product->description }}</p>
+             <p>
+             <div class="clearfix">
+               <div class="pull-left price">
+                 {{ $product->price }}$
+               </div>
+               <a href="#" class="btn btn-success pull-right" role="button">Add To Cart</a></p>
+             </div>
+           </div>
+         </div>
+       </div>
+       @endforeach
     </div>
-  </div>
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="http://prodimage.images-bn.com/pimages/9780545139700_p0_v4_s1200x630.jpg"
-       alt="harry potter" class="img-responsive">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p class="descrioption">Lorem ipsum dolor sit amet, consectetur adipisicing </p>
-        <p>
-        <div class="clearfix">
-          <div class="pull-left price">
-            25$
-          </div>
-          <a href="#" class="btn btn-success pull-right" role="button">Add To Cart</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="http://prodimage.images-bn.com/pimages/9780545139700_p0_v4_s1200x630.jpg"
-       alt="harry potter" class="img-responsive">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p class="descrioption">Lorem ipsum dolor sit amet, consectetur adipisicing </p>
-        <p>
-        <div class="clearfix">
-          <div class="pull-left price">
-            25$
-          </div>
-          <a href="#" class="btn btn-success pull-right" role="button">Add To Cart</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="http://prodimage.images-bn.com/pimages/9780545139700_p0_v4_s1200x630.jpg"
-       alt="harry potter" class="img-responsive">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p class="descrioption">Lorem ipsum dolor sit amet, consectetur adipisicing </p>
-        <p>
-        <div class="clearfix">
-          <div class="pull-left price">
-            25$
-          </div>
-          <a href="#" class="btn btn-success pull-right" role="button">Add To Cart</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="http://prodimage.images-bn.com/pimages/9780545139700_p0_v4_s1200x630.jpg"
-       alt="harry potter" class="img-responsive">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p class="descrioption">Lorem ipsum dolor sit amet, consectetur adipisicing </p>
-        <p>
-        <div class="clearfix">
-          <div class="pull-left price">
-            25$
-          </div>
-          <a href="#" class="btn btn-success pull-right" role="button">Add To Cart</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="http://prodimage.images-bn.com/pimages/9780545139700_p0_v4_s1200x630.jpg"
-       alt="harry potter" class="img-responsive">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p class="descrioption">Lorem ipsum dolor sit amet, consectetur adipisicing </p>
-        <p>
-        <div class="clearfix">
-          <div class="pull-left price">
-            25$
-          </div>
-          <a href="#" class="btn btn-success pull-right" role="button">Add To Cart</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    @endforeach
 @stop

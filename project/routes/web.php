@@ -10,6 +10,7 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::get('/',function(){
-  return view('shop.index');
-});
+Route::get('/',[
+  'uses' => 'ProductController@getIndex',
+  'as'   => 'product.index'
+]);
