@@ -4,6 +4,8 @@
   Shop
 @stop
 @section('content')
+   <h2 class="title-page">Buy The Latest Projects From Coalition Technologies</h2>
+   <hr>
     @foreach($products->chunk(3) as $productChunk)
     <div class="row">
        @foreach($productChunk as $product )

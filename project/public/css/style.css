@@ -1,6 +1,18 @@
 .thumbnail img{
   max-height: 150px;
-  width: 200px;
+  width: 300px;
+}
+.title-page{
+  text-align: center;
+  font-family: cursive;
+  color: #00c8ff;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+}
+.navbar-header a{
+  font-size: 20px;
+  font-weight: bold;
+  font-family:  monospace;
 }
 .price{
   font-weight: bold;
