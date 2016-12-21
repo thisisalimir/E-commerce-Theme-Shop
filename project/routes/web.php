@@ -18,27 +18,43 @@ Route::get('/',[
 
 //Sign up Route
 
-Route::get('/signup',[
-  'uses' => 'UserController@getSignUp',
-  'as'   => 'user.signup'
-]);
 
-Route::post('/signup',[
-  'uses' => 'UserController@postSignUp',
-  'as'   => 'user.signup'
-]);
+Route::group(['prefix'=>'user'],function(){
 
-Route::get('/login',[
-   'uses' => 'UserController@getLogIn',
-   'as'   => 'user.login'
-]);
+   Route::group(['middleware'=>'guest'],function(){
+     Route::get('/signup',[
+       'uses' => 'UserController@getSignUp',
+       'as'   => 'user.signup'
+     ]);
 
-Route::post('/login',[
-   'uses' => 'UserController@postLogIn',
-   'as'   => 'user.login'
-]);
+     Route::post('/signup',[
+       'uses' => 'UserController@postSignUp',
+       'as'   => 'user.signup'
+     ]);
 
-Route::get('/user/profile',[
-    'uses' => 'UserController@getProfile',
-    'as'   => 'user.profile'
-]);
+     Route::get('/login',[
+        'uses' => 'UserController@getLogIn',
+        'as'   => 'user.login'
+     ]);
+
+     Route::post('/login',[
+        'uses' => 'UserController@postLogIn',
+        'as'   => 'user.login'
+     ]);
+
+   });
+
+Route::group(['middleware'=>'auth'],function(){
+
+    Route::get('/profile',[
+        'uses' => 'UserController@getProfile',
+        'as'   => 'user.profile'
+    ]);
+
+    Route::get('/logout',[
+        'uses' => 'UserController@getLogOut',
+        'as'   => 'user.logout'
+    ]);
+
+  });
+});

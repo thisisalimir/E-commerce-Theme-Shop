@@ -23,9 +23,12 @@ class UserController extends Controller
          'email' => $request->input('email'),
          'password' => bcrypt($request->input('password')),
        ]);
-       $user->save();
 
-       return redirect()->route('product.index');
+       $user->save();
+       
+       Auth::login($user);
+
+       return redirect()->route('user.profile');
 
      }
 
@@ -53,5 +56,12 @@ class UserController extends Controller
      public function getProfile()
      {
         return view('user.profile');
+      }
+
+      public function getLogOut()
+      {
+        Auth::logout();
+
+        return redirect()->route('product.index');
       }
 }

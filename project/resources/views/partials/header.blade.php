@@ -27,10 +27,14 @@
            <i class="fa fa-user" aria-hidden="true"></i>
             User Management <span class="caret"></span></a>
           <ul class="dropdown-menu">
+            @if(Auth::check())
+            <li><a href="{{route('user.profile')}}">User Profile</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="{{route('user.logout')}}">Logout</a></li>
+            @else
             <li><a href="{{route('user.signup')}}">SignUp</a></li>
             <li><a href="{{route('user.login')}}">LogIn</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Logout</a></li>
+            @endif
           </ul>
         </li>
       </ul>
