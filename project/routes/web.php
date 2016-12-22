@@ -27,6 +27,18 @@ Route::get('/shopping-cart',[
   'as' => 'product.shoppingCart'
 ]);
 
+//Paymetn Route
+Route::get('/checkout',[
+   'uses' => 'ProductController@getCheckhOut',
+   'as'    => 'checkout'
+]);
+Route::post('/checkout',[
+    'uses' =>  'ProductController@postCheckOut',
+    'as'   =>  'checkout'
+]);
+
+
+
 //Sign up Route
 Route::group(['prefix'=>'user'],function(){
 
