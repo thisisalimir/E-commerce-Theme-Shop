@@ -1,3 +1,3 @@
 # Coalition-Technologies-Test
 
-This is test Project By Coalition-Technologies[http://coalitiontechnologies.com]
+This is test Project For Coalition-Technologies[http://coalitiontechnologies.com]
