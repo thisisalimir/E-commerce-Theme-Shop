@@ -4,6 +4,15 @@
   Shop
 @stop
 @section('content')
+  @if(Session::has('success'))
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+        <div id="charge-error" class="alert alert-success">
+          {{Session::get('success')}}
+        </div>
+      </div>
+    </div>
+  @endif  
    <h2 class="title-page">Buy The Latest Projects From Coalition Technologies</h2>
    <hr>
     @foreach($products->chunk(3) as $productChunk)
