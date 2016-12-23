@@ -47,6 +47,26 @@ class Cart
       //and also price
       $this->totalPrice += $item->price;
     }
+    //method to reduce our product
+    public function reduceByOne($id)
+    {
+      $this->items[$id]['qty']--;
+      $this->items[$id]['price'] -= $this->items[$id]['item']['price'];
+      $this->totalQty--;
+      $this->totalPrice -= $this->items[$id]['item']['price'];
+      //now if we reduce by one set to 0 we remove it
+      if ($this->items[$id]['qty'] <= 0) {
+        unset($this->items[$id]);
+      }
+    }
+    //method to remove item complete
+    public function removeItem($id)
+    {
+      $this->totalQty -= $this->items[$id]['qty'];
+      $this->totalPrice -= $this->items[$id]['price'];
+      unset($this->items[$id]);
+
+    }
 
 
 }

@@ -37,6 +37,37 @@ class ProductController extends Controller
          return redirect()->route('product.index');
     }
 
+    public function getReduceByOne($id)
+    {
+      //if user already add value we show it
+      $oldCart = Session::has('cart') ? Session::get('cart') : NULL;
+      //if not we make new cart
+      $cart = new Cart($oldCart);
+      //using our Method from Cart
+      $cart->reduceByOne($id);
+      if (count($cart->items) > 0) {
+        Session::put('cart',$cart);
+      }else {
+        Session::forget('cart');
+      }
+      return redirect()->route('product.shoppingCart');
+    }
+
+    public function getRemove($id)
+    {
+      //if user already add value we show it
+      $oldCart = Session::has('cart') ? Session::get('cart') : NULL;
+      //if not we make new cart
+      $cart = new Cart($oldCart);
+      $cart->removeItem($id);
+      if (count($cart->items) > 0) {
+        Session::put('cart',$cart);
+      }else {
+        Session::forget('cart');
+      }
+      return redirect()->route('product.shoppingCart');
+    }
+
     //method to go to cart page and see purchase
     public function getCart()
     {
