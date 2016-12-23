@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use Session;
 
 class UserController extends Controller
 {
@@ -25,8 +26,16 @@ class UserController extends Controller
        ]);
 
        $user->save();
-       
+
        Auth::login($user);
+       // if user came from another page
+       if (Session::has('oldUrl')) {
+         //we get URL
+         $oldUrl = Session::get('oldUrl');
+         //and then after redirect we forget it
+         Session::forget('oldUrl');
+         return redirect()->to($oldUrl);
+       }
 
        return redirect()->route('user.profile');
 
@@ -48,6 +57,14 @@ class UserController extends Controller
          'email' => $request->input('email'),
          'password' => $request->input('password'),
          ])) {
+           // if user came from another page
+           if (Session::has('oldUrl')) {
+             //we get URL
+             $oldUrl = Session::get('oldUrl');
+             //and then after redirect we forget it
+             Session::forget('oldUrl');
+             return redirect()->to($oldUrl);
+           }
           return redirect()->route('user.profile');
        }
        return redirect()->back();
@@ -62,6 +79,6 @@ class UserController extends Controller
       {
         Auth::logout();
 
-        return redirect()->route('product.index');
+        return redirect()->route('user.login');
       }
 }

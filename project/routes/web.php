@@ -27,15 +27,7 @@ Route::get('/shopping-cart',[
   'as' => 'product.shoppingCart'
 ]);
 
-//Paymetn Route
-Route::get('/checkout',[
-   'uses' => 'ProductController@getCheckhOut',
-   'as'    => 'checkout'
-]);
-Route::post('/checkout',[
-    'uses' =>  'ProductController@postCheckOut',
-    'as'   =>  'checkout'
-]);
+
 
 
 
@@ -75,6 +67,16 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/logout',[
         'uses' => 'UserController@getLogOut',
         'as'   => 'user.logout'
+    ]);
+
+    //Paymetn Route
+    Route::get('/checkout',[
+       'uses' => 'ProductController@getCheckhOut',
+       'as'    => 'checkout'
+    ]);
+    Route::post('/checkout',[
+        'uses' =>  'ProductController@postCheckOut',
+        'as'   =>  'checkout'
     ]);
 
   });
