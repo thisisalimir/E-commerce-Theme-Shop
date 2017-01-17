@@ -83,7 +83,7 @@ Route::group(['middleware'=>'auth'],function(){
 
     //Paymetn Route
     Route::get('/checkout',[
-       'uses' => 'ProductController@getCheckhOut',
+       'uses' => 'ProductController@getCheckOut',
        'as'    => 'checkout'
     ]);
     Route::post('/checkout',[

@@ -87,7 +87,7 @@ class ProductController extends Controller
        ]);
     }
 
-    public function getCheckhOut()
+    public function getCheckOut()
     {
       //if user has no purchase we return
        if (!Session::has('cart')) {
@@ -128,10 +128,10 @@ class ProductController extends Controller
         Auth::user()->orders()->save($order);
       } catch (\Exception $e) {
         return redirect()->route('checkout')
-                        ->with('error' , $e->getMessage());
+                        ->with('error',$e->getMessage());
       }
 
-      Session::foget('cart');
+      Session::forget('cart');
       return redirect()->route('product.index')
                       ->with('success','Successfully Purchased');
     }
