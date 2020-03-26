@@ -1,4 +1,4 @@
-# Coalition-Technologies-Test
+# E-commerce Theme Shop
 
-
-This is E-commerce Theme Shop Create By Laravel
+After User Signup They Can Buy Any themes 
+Also i Used Stripe For Payment
